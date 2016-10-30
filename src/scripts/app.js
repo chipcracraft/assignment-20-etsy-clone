@@ -1,12 +1,10 @@
+const appContainer = document.querySelector('#app-container')
 const $ = require('jquery')
 const Backbone = require('backbone')
-const UserCollection = require('./model-collection.js')
-const {ViewTemplateConstructor,templateFn} = require('./view.js')
+const EtsyCollection = require('./model-collection.js')
+const homeView = require('./home-view.js')
 
 
-
-console.log(Backbone)
-document.querySelector('#app-container').innerHTML = `<h1>YOLO</h1>`
 
 const AppRouter = Backbone.Router.extend({
 
@@ -16,17 +14,18 @@ const AppRouter = Backbone.Router.extend({
   },
 
   showHomePage: function(){
-        const coll = new UserCollection()
-        coll.fetch().then(function(){
+      appContainer.innerHTML = '<h2>Hello there</h2>'
+        const activeEtsy = new EtsyCollection()
 
-      console.log(coll)
+        activeEtsy.fetch().then(function(){
+          const mainViewPage = new homeView(activeEtsy)
+          mainViewPage.render()
+          activeEtsy.fetch()
+
+      console.log(activeEtsy)
     })
-      // const view = new ViewTemplateConstructor()
-      // view.render(coll)
 
   },
-
-
 
   initialize: function(){
     Backbone.history.start()

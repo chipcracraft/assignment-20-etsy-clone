@@ -2,12 +2,12 @@ const appContainer = document.querySelector('#app-container')
 const $ = require('jquery')
 const Backbone = require('backbone')
 
-const UserModel = Backbone.Model.extend({
- url : ""
+const EtsyModel = Backbone.Model.extend({
+ 
 })
 
-const UserCollection = Backbone.Collection.extend({
-    model: UserModel,
+const EtsyCollection = Backbone.Collection.extend({
+    model: EtsyModel,
     url: '',
   parse: function(rawJSONRes){
     return rawJSONRes.results
@@ -20,4 +20,4 @@ const UserCollection = Backbone.Collection.extend({
 
 })
 
-module.exports = UserCollection
+module.exports = EtsyCollection
