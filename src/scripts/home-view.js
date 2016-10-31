@@ -9,11 +9,13 @@ const homeView = Backbone.View.extend({
 
         _buildTemplate: function(theCollection){
           var htmlStr = ''
+
           for (var i = 0; i < theCollection.models.length; i++){
             var etsyInfo = theCollection.models[i]
             htmlStr += '<div class="row">'
             htmlStr +=  '<div class= "col-xs-12 col-sm-4">'
             htmlStr +=    '<div class="thumbnail etsy-info">'
+            // htmlStr +=      '<img src='
             htmlStr +=      '<h5>' + etsyInfo.get('title')+ '</h5>'
             htmlStr +=      '<h5>' + etsyInfo.get('price')+ '</h5>'
             htmlStr +=   '</div>'

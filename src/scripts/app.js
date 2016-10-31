@@ -1,4 +1,5 @@
 const appContainer = document.querySelector('#app-container')
+// const Bootstrap = require('bootstrap')
 const $ = require('jquery')
 const Backbone = require('backbone')
 const EtsyCollection = require('./model-collection.js')
@@ -14,7 +15,7 @@ const AppRouter = Backbone.Router.extend({
   },
 
   showHomePage: function(){
-      appContainer.innerHTML = '<h2>Hello there</h2>'
+      appContainer.innerHTML = '<h2>Etsy</h2>'
         const activeEtsy = new EtsyCollection()
 
         activeEtsy.fetch().then(function(){
