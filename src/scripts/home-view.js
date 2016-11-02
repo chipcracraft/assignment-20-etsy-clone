@@ -3,24 +3,27 @@ const $ = require('jquery')
 const appContainer = document.querySelector('#app-container')
 
 
-const homeView = Backbone.View.extend({
+const HomeView = Backbone.View.extend({
 
         el: "#app-container",
 
         _buildTemplate: function(theCollection){
-          var htmlStr = ''
+                var htmlStr = ''
+
 
           for (var i = 0; i < theCollection.models.length; i++){
             var etsyInfo = theCollection.models[i]
-            htmlStr += '<div class="row">'
-            htmlStr +=  '<div class= "col-xs-12 col-sm-4">'
-            htmlStr +=    '<div class="thumbnail etsy-info">'
-            // htmlStr +=      '<img src='
-            htmlStr +=      '<h5>' + etsyInfo.get('title')+ '</h5>'
-            htmlStr +=      '<h5>' + etsyInfo.get('price')+ '</h5>'
-            htmlStr +=   '</div>'
-            htmlStr +=  '</div>'
-            htmlStr += '</div>'
+
+                  htmlStr +=  '<div class= "col-xs-12 col-sm-6 col-md-4 col-lg-3">'
+                  htmlStr +=  '<a href=#details/'+etsyInfo.get('listing_id')+'>'
+                  htmlStr +=    '<div class="thumbnail etsy-info">'
+                  htmlStr +=      '<img src=' + etsyInfo.get("Images")[0].url_170x135 +' alt="..."  >'
+                  htmlStr +=      '<h5>' + etsyInfo.get('title')+ '</h5>'
+                  htmlStr +=      '<h5>' + etsyInfo.get('price')+ '</h5>'
+                  htmlStr +=    '</a>'
+                  htmlStr +=   '</div>'
+                  htmlStr +=  '</div>'
+
           }
 
               return htmlStr
@@ -34,10 +37,10 @@ const homeView = Backbone.View.extend({
 
             render: function(){
 
-              this.el.innerHTML += this._buildTemplate(this.coll)
+              this.el.innerHTML = this._buildTemplate(this.coll)
 
             }
 
 })
 
-module.exports = homeView
+module.exports = HomeView
